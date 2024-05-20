@@ -1,0 +1,28 @@
+<h1>Notizformular</h1>
+<form class="ui large form" [formGroup]="noteForm" (ngSubmit)="submitNoteForm()">
+
+  <div class="field" *ngIf="isUpdatingNote">
+    <label></label>
+    <input formControlName="id" type="hidden">
+  </div>
+
+  <div class="field" *ngIf="isUpdatingNote">
+    <label></label>
+    <input formControlName="title" type="hidden" >
+  </div>
+
+
+  <div class="field" *ngIf="isUpdatingNote">
+  <label>Beschreibung</label>
+  <input formControlName="description" >
+</div>
+
+  <div class="field" *ngIf="isUpdatingNote">
+    <label>List id</label>
+    <input formControlName="list_id" >
+  </div>
+
+
+
+  <button type="submit" class="ui button" [disabled]="noteForm.invalid">Speichern</button>
+</form>

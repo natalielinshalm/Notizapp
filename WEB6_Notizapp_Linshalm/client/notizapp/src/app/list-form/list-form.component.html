@@ -1,0 +1,37 @@
+<div class="ui container">
+  <div class="ui raised very padded text container segment">
+    <h2 class="ui header">Listenformular</h2>
+    <form class="ui large form" [formGroup]="listForm" (ngSubmit)="submitForm()">
+      <input type="hidden" formControlName="id">
+
+      <div class="field">
+        <label>Name</label>
+        <div class="ui left icon input">
+          <i class="list icon"></i>
+          <input formControlName="name" type="text" placeholder="Geben Sie einen Namen ein">
+        </div>
+        <div *ngIf="errors['name']" class="ui negative message">{{ errors['name'] }}</div>
+      </div>
+
+      <div class="field">
+        <label>User ID</label>
+        <div class="ui left icon input">
+          <i class="user icon"></i>
+          <input formControlName="user_id" type="number" placeholder="Geben Sie eine User ID ein">
+        </div>
+        <div *ngIf="errors['user_id']" class="ui negative message">{{ errors['user_id'] }}</div>
+      </div>
+
+      <div class="field">
+        <label>Erstellt am</label>
+        <div class="ui left icon input">
+          <i class="calendar icon"></i>
+          <input formControlName="createdAt" type="date" placeholder="Wählen Sie ein Datum aus">
+        </div>
+        <div *ngIf="errors['createdAt']" class="ui negative message">{{ errors['createdAt'] }}</div>
+      </div>
+
+      <button type="submit" class="ui purple submit button" [disabled]="listForm.invalid">Speichern</button>
+    </form>
+  </div>
+</div>

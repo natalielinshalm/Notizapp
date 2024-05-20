@@ -1,0 +1,67 @@
+<div class="ui container">
+  <div class="ui segment">
+    <h1 class="ui header">Willkommen in deiner Notizapp.</h1>
+    <p class="ui message">Deine Notizapp ist startklar. Wähle eine Option unten aus, um loszulegen.</p>
+    <div class="ui four cards">
+      <div class="card">
+        <div class="content">
+          <div class="header">Listen</div>
+          <div class="description">Verwalte deine Listen und Aufgaben.</div>
+        </div>
+        <div class="ui bottom attached button purple" routerLink="../lists">Zu den Listen</div>
+      </div>
+      <div class="card">
+        <div class="content">
+          <div class="header">Notizen</div>
+          <div class="description">Erstelle und organisiere deine Notizen.</div>
+        </div>
+        <div class="ui bottom attached button purple" routerLink="../notes">Zu den Notizen</div>
+      </div>
+      <div class="card">
+        <div class="content">
+          <div class="header">Tags</div>
+          <div class="description">Füge Tags hinzu, um deine Inhalte zu organisieren.</div>
+        </div>
+        <div class="ui bottom attached button purple" routerLink="../tags">Zu den Tags</div>
+      </div>
+      <div class="card">
+        <div class="content">
+          <div class="header">Todos</div>
+          <div class="description">Behalte deine Aufgaben im Blick.</div>
+        </div>
+        <div class="ui bottom attached button purple" routerLink="../todos">Zu den Todos</div>
+      </div>
+    </div>
+  </div>
+  <div class="ui segment">
+    <app-search (listSelected)="listSelected($event)"></app-search>
+  </div>
+</div>
+
+<style>
+  /* Styling für das Home-Menü */
+  .ui.container {
+    margin-top: 30px;
+  }
+
+  .ui.segment {
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15)
+  }
+
+  .ui.message {
+    display: none;
+  }
+
+  .ui.cards .card {
+    margin-bottom: 20px;
+  }
+
+  .ui.cards .card .content {
+    padding: 20px;
+  }
+
+  .ui.cards .card .button {
+    border-radius: 0;
+  }
+</style>

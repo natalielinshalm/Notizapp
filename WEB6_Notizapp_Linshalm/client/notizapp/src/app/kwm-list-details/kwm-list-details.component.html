@@ -1,0 +1,139 @@
+<div *ngIf="kwmlist" class="ui grid list-detail">
+  <div class="sixteen wide column">
+    <h1 class="ui header list-name">{{ kwmlist.name }}</h1>
+    <div class="ui divider"></div>
+    <div class="ui grid detail-grid">
+      <div class="four wide column detail-item">
+        <h4 class="ui header">User ID</h4>
+        <p>{{ kwmlist.user_id }}</p>
+      </div>
+      <div class="four wide column detail-item">
+        <h4 class="ui header">Erstellt am</h4>
+        <p>{{ kwmlist.createdAt | date:'dd.MM.yyyy' }}</p>
+      </div>
+      <div class="four wide column detail-item">
+        <h4 class="ui header">List ID</h4>
+        <p>{{ kwmlist.id }}</p>
+      </div>
+    </div>
+    <div class="button-container">
+      <div *ngIf="authService.isLoggedIn()">
+        <button class="ui button pastel-button smaller-button" (click)="removeList(kwmlist.id)">
+          <i class="trash icon"></i>
+          Liste löschen
+        </button>
+        <a class="ui button pastel-button smaller-button" [routerLink]="['../../admin', kwmlist.id]">
+          <i class="edit icon"></i>
+          Liste bearbeiten
+        </a>
+      </div>
+      <button [routerLink]="'/lists'" class="ui button back-button smaller-button">Zurück</button>
+    </div>
+  </div>
+  <style>
+    /* Styling for the main container */
+    .list-detail {
+      margin-top: 20px;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .list-detail > .column > .ui.header {
+      font-size: 2em;
+      color: #333;
+    }
+
+    .list-detail > .column > .ui.divider {
+      margin: 20px 0;
+    }
+
+    .detail-grid {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .detail-item {
+      margin-bottom: 10px;
+    }
+
+    .detail-item h4.ui.header {
+      margin-top: 0;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    .detail-item p {
+      margin: 0;
+      font-size: 1.2em;
+      color: #333;
+    }
+
+    /* Styling for the button container */
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; /* Aligns buttons to the start (left) */
+      margin-top: 20px;
+    }
+
+    .button-container .button {
+      margin-bottom: 10px;
+      width: auto; /* Makes the button only as wide as its content */
+    }
+
+    .button-container .back-button {
+      margin-top: 10px; /* Slightly smaller margin top */
+      background: #fff; /* White background */
+      color: #8e44ad; /* Lila text */
+      border: 1px solid #8e44ad; /* Lila border */
+      transition: background 0.3s ease, color 0.3s ease;
+      padding: 8px 12px;
+      font-size: 0.9em;
+    }
+
+    .button-container .back-button:hover {
+      background: #8e44ad; /* Lila background */
+      color: #fff; /* White text */
+    }
+
+    /* General UI improvements */
+    .ui.button.pastel-button {
+      background: #8e44ad; /* Light pastel lilac */
+      color: #fff; /* White text */
+      border: 1px solid #7d3c98;
+      box-shadow: none;
+      transition: background 0.3s ease, color 0.3s ease;
+      padding: 8px 12px;
+      font-size: 0.9em;
+    }
+
+    .ui.button.pastel-button:hover {
+      background: #7d3c98; /* Slightly darker pastel lilac */
+      color: #fff;
+    }
+
+    .ui.button.pastel-button .icon {
+      margin-right: 5px;
+    }
+
+    .ui.button.pastel-button.back-button {
+      background: #fff; /* White background for back button */
+      color: #8e44ad; /* Lila text */
+      border: 1px solid #8e44ad; /* Lila border */
+      padding: 8px 12px;
+      font-size: 0.9em;
+    }
+
+    .ui.button.pastel-button.back-button:hover {
+      background: #8e44ad; /* Lila background on hover */
+      color: #fff; /* White text on hover */
+    }
+
+    /* Smaller button */
+    .smaller-button {
+      padding: 6px 10px;
+      font-size: 0.8em;
+    }
+  </style>

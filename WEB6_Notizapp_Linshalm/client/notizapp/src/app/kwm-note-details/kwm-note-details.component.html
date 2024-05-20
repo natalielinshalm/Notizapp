@@ -1,0 +1,141 @@
+<div *ngIf="kwmnote" class="ui grid note-detail">
+  <div class="sixteen wide column">
+    <h1 class="ui header">{{ kwmnote.title }}</h1>
+    <div class="ui divider"></div>
+    <div class="ui grid detail-grid">
+      <div class="four wide column detail-item">
+        <h4 class="ui header">List ID</h4>
+        <p>{{ kwmnote.list_id }}</p>
+      </div>
+      <div class="four wide column detail-item">
+        <h4 class="ui header">Note ID</h4>
+        <p>{{ kwmnote.id }}</p>
+      </div>
+      <div class="four wide column detail-item">
+        <h4 class="ui header">Beschreibung</h4>
+        <p>{{ kwmnote.description }}</p>
+      </div>
+    </div>
+    <div class="button-container">
+      <div *ngIf="authService.isLoggedIn()">
+        <button class="ui button pastel-button smaller-button" (click)="removeNote(kwmnote.id)">
+          <i class="trash icon"></i>
+          Notiz löschen
+        </button>
+        <a class="ui button pastel-button smaller-button" [routerLink]="['../../note-form', kwmnote.id]">
+          <i class="edit icon"></i>
+          Notiz bearbeiten
+        </a>
+      </div>
+      <button [routerLink]="'/notes'" class="ui button back-button smaller-button">Zurück</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Styling für die Notiz-Detailansicht */
+  .note-detail {
+    margin-top: 20px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .note-detail > .column > .ui.header {
+    font-size: 2em;
+    color: #333;
+  }
+
+  .note-detail > .column > .ui.divider {
+    margin: 20px 0;
+  }
+
+  .detail-grid {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .detail-item {
+    margin-bottom: 10px;
+  }
+
+  .detail-item h4.ui.header {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #555;
+  }
+
+  .detail-item p {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+  }
+
+  /* Styling für den Button-Container */
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+
+  .button-container .button {
+    margin-bottom: 10px;
+    width: auto;
+  }
+
+  .button-container .back-button {
+    margin-top: 10px;
+    background: #fff;
+    color: #8e44ad;
+    border: 1px solid #8e44ad;
+    transition: background 0.3s ease, color 0.3s ease;
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
+
+  .button-container .back-button:hover {
+    background: #8e44ad;
+    color: #fff;
+  }
+
+  /* Allgemeine UI-Verbesserungen */
+  .ui.button.pastel-button {
+    background: #8e44ad;
+    color: #fff;
+    border: 1px solid #7d3c98;
+    box-shadow: none;
+    transition: background 0.3s ease, color 0.3s ease;
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
+
+  .ui.button.pastel-button:hover {
+    background: #7d3c98;
+    color: #fff;
+  }
+
+  .ui.button.pastel-button .icon {
+    margin-right: 5px;
+  }
+
+  .ui.button.pastel-button.back-button {
+    background: #fff;
+    color: #8e44ad;
+    border: 1px solid #8e44ad;
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
+
+  .ui.button.pastel-button.back-button:hover {
+    background: #8e44ad;
+    color: #fff;
+  }
+
+  /* Kleinerer Button */
+  .smaller-button {
+    padding: 6px 10px;
+    font-size: 0.8em;
+  }
+</style>

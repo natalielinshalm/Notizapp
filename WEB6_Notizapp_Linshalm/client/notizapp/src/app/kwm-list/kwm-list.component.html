@@ -1,0 +1,52 @@
+<div class="ui middle aligned relaxed list list-overview">
+  <a *ngFor="let kwmlist of kwmlists" class="item app-kwm-list" [routerLink]="['/lists', kwmlist.id]">
+    <div class="content">
+      <i class="purple list icon"></i>
+      <div class="header">{{ kwmlist.name }}</div>
+    </div>
+  </a>
+</div>
+
+<style>
+  /* Styling for the list overview */
+  .list-overview {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .list-overview .item {
+    padding: 15px 20px;
+    font-size: 1.1em;
+    color: #333;
+    border-bottom: 1px solid #d1d1d1; /* Leichtere lila Trennlinie */
+    transition: background 0.3s ease;
+  }
+
+  .list-overview .item:last-child {
+    border-bottom: none; /* Entfernt die Trennlinie vom letzten Element */
+  }
+
+  .list-overview .item:hover {
+    background: #f0f0f0;
+  }
+
+  .list-overview .header {
+    margin-top: 5px;
+    font-size: 1.1em;
+    color: #333;
+  }
+
+  .list-overview .icon {
+    margin-right: 10px;
+    margin-bottom: 20px;
+  }
+
+  .list-overview .content {
+    display: flex; /* Flexbox-Layout */
+    align-items: center; /* Zentriert den Inhalt vertikal */
+  }
+</style>

@@ -1,0 +1,90 @@
+<div class="ui {{ isLoggedIn() ? 'seven' : 'six' }} item tabs menu">
+  <a routerLink="home" routerLinkActive="active" class="item">Home</a>
+  <a routerLink="lists" routerLinkActive="active" class="item">Listen</a>
+  <a routerLink="notes" routerLinkActive="active" class="item">Notizen</a>
+  <a routerLink="tags" routerLinkActive="active" class="item">Tags</a>
+  <a routerLink="todos" routerLinkActive="active" class="item">Todos</a>
+
+  <ng-container *ngIf="isLoggedIn()">
+    <a routerLink="admin" routerLinkActive="active" class="item">Administration</a>
+  </ng-container>
+
+  <a routerLink="login" routerLinkActive="active" class="item">{{ getLoginLabel() }}</a>
+</div>
+
+<div class="ui container">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="ui inverted vertical footer segment">
+  <div class="ui center aligned container">
+    <div class="ui stackable inverted divided grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Über Uns</h4>
+        <div class="ui inverted link list">
+          <a href="#" class="item">Unternehmen</a>
+          <a href="#" class="item">Team</a>
+          <a href="#" class="item">Karriere</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Ressourcen</h4>
+        <div class="ui inverted link list">
+          <a href="#" class="item">Support</a>
+          <a href="#" class="item">Kontakt</a>
+          <a href="#" class="item">Dokumentation</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Newsletter abonnieren</h4>
+        <p>Erhalten Sie regelmäßig Updates zu neuen Funktionen und Angeboten.</p>
+        <div class="ui action input">
+          <input type="email" placeholder="E-Mail Adresse">
+          <button class="ui button">Abonnieren</button>
+        </div>
+      </div>
+    </div>
+    <div class="ui inverted section divider"></div>
+    <div class="ui horizontal inverted small divided link list">
+      <a class="item" href="#">Nutzungsbedingungen</a>
+      <a class="item" href="#">Datenschutzerklärung</a>
+      <a class="item" href="#">Impressum</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Styling für den Footer */
+  .footer {
+    margin-top: 30px;
+    text-align: center;
+    padding: 50px 0;
+    background-color: #dbcdf0; /* Pastellila Farbe */
+    width: 100%;
+    position: absolute; /* Positionierung am Ende der Seite */
+    bottom: 0;
+    left: 0;
+  }
+
+  .footer a {
+    color: #333;
+  }
+
+  .footer a:hover {
+    color: #666; /* Hellere Farbe beim Überfahren */
+  }
+
+  .footer p {
+    margin-bottom: 20px;
+  }
+
+  footer .ui.action.input .ui.button {
+    background-color: #8e44ad; /* Lila Farbe für den Abonnieren-Button */
+    color: #fff;
+  }
+
+  .ui.inverted.segment {
+    background-color: #CEA7DD;
+    color: #fff;
+  }
+</style>

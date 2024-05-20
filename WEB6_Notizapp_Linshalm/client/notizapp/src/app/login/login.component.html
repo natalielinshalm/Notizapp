@@ -1,0 +1,39 @@
+<div *ngIf="!isLoggedIn()" class="ui container">
+  <div class="ui raised very padded text container segment">
+    <h2 class="ui header">Sie sind abgemeldet.</h2>
+    <form class="ui large form" [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="field">
+        <label>E-Mail</label>
+        <div class="ui left icon input">
+          <i class="user icon"></i>
+          <input type="email" id="username" formControlName="username" placeholder="Ihre E-Mail-Adresse">
+        </div>
+        <div *ngIf="loginForm.get('username')?.invalid &&
+          (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)">
+          <div *ngIf="loginForm.get('username')?.hasError('required')" class="ui red message">Bitte geben Sie Ihre E-Mail-Adresse ein.</div>
+          <div *ngIf="loginForm.get('username')?.hasError('email')" class="ui red message">Bitte überprüfen Sie das E-Mail-Format.</div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Passwort</label>
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <input type="password" formControlName="password" placeholder="Ihr Passwort">
+        </div>
+        <div *ngIf="loginForm.get('password')?.invalid &&
+          (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+          <div class="ui red message">Bitte geben Sie Ihr Passwort ein.</div>
+        </div>
+      </div>
+      <button type="submit" class="ui purple submit button" [disabled]="loginForm.invalid">Anmelden</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="isLoggedIn()" class="ui container">
+  <div class="ui raised very padded text container segment">
+    <h2 class="ui header">Willkommen!</h2>
+    <p>Sie sind erfolgreich angemeldet.</p>
+    <button type="button" class="ui purple button" (click)="logout()">Abmelden</button>
+  </div>
+</div>
